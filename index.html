@@ -6,30 +6,40 @@
   <title>Vitrinas - Instituto</title>
   <script src="datos.js"></script>
   <style>
-    body { font-family: -apple-system, sans-serif; padding: 20px; background: #f0f2f5; color: #1c1e21; margin: 0; }
-    h1 { text-align: center; color: #1a73e8; }
-    h2 { margin-top: 25px; border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; padding: 20px; background: #f0f2f5; color: #1c1e21; margin: 0; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { text-align: center; color: #1a73e8; margin-bottom: 30px; }
+    h2 { margin-top: 25px; color: #5f6368; font-size: 1.2em; text-transform: uppercase; letter-spacing: 1px; }
+    
+    /* Grid dinámico: 1 columna en móvil, 2 en PC */
+    .grid-botones { display: grid; grid-template-columns: 1fr; gap: 15px; }
+    @media (min-width: 600px) { .grid-botones { grid-template-columns: 1fr 1fr; } }
+
     .boton-menu { 
-      display: block; background: white; margin: 12px 0; padding: 18px; 
+      display: block; background: white; padding: 20px; 
       text-decoration: none; color: #000; border-radius: 12px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-weight: bold; font-size: 1.1em;
-      border: 1px solid #ddd;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08); font-weight: bold;
+      border: 1px solid #eee; transition: all 0.2s; text-align: center;
     }
-    .boton-menu:active { background: #e8f0fe; transform: scale(0.98); }
+    .boton-menu:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-color: #1a73e8; }
+    .boton-menu:active { transform: scale(0.98); }
   </style>
 </head>
 <body>
-  <h1>Vitrinas del Instituto</h1>
-  <div id="contenido"></div>
+  <div class="container">
+    <h1>Vitrinas del Instituto</h1>
+    <div id="contenido"></div>
+  </div>
 
   <script>
     let html = "";
     for (let v in datos) {
-      html += `<h2>${datos[v].nombre}</h2>`;
+      html += `<h2>${datos[v].nombre}</h2><div class="grid-botones">`;
       for (let a in datos[v].apartados) {
         const ap = datos[v].apartados[a];
         html += `<a class="boton-menu" href="apartados.html?vitrina=${v}&apartado=${a}">${ap.nombre}</a>`;
       }
+      html += `</div>`;
     }
     document.getElementById("contenido").innerHTML = html;
   </script>
