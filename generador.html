@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador Automático de QRs</title>
+  <script src="datos.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f4f4f4; }
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px; padding: 20px; 
+    }
+    .qr-card { 
+      background: white; padding: 15px; border-radius: 10px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    img { margin-top: 10px; border: 1px solid #eee; }
+    button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+    @media print { button { display: none; } } /* Oculta el botón al imprimir */
+  </style>
+</head>
+<body>
+  <h1>Generador de QRs para Vitrinas</h1>
+  <p>Esta página genera los QR automáticamente basados en tu archivo datos.js</p>
+  <button onclick="window.print()">Imprimir todos los QR</button>
+  
+  <div id="contenedor-qrs" class="grid"></div>
+
+  <script>
+    const baseDir = "https://estrailer.github.io/Ejercicio-Instituto/apartados.html";
+    let html = "";
+
+    // Recorremos las vitrinas y apartados de datos.js
+    for (let v in datos) {
+      for (let a in datos[v].apartados) {
+        const nombre = datos[v].apartados[a].nombre;
+        const urlFinal = `${baseDir}?vitrina=${v}&apartado=${a}`;
+        
+        // Creamos la URL de la imagen del QR usando la API de Google
+        const qrImagen = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(urlFinal)}`;
+
+        html += `
+          <div class="qr-card">
+            <strong>Vitrina ${v}: ${nombre}</strong><br>
+            <img src="${qrImagen}" alt="QR ${nombre}">
+            <p style="font-size:10px;">${urlFinal}</p>
+          </div>
+        `;
+      }
+    }
+
+    document.getElementById("contenedor-qrs").innerHTML = html;
+  </script>
+</body>
+</html>
