@@ -1,51 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="datos.js"></script>
+  <style>
+    body { font-family: -apple-system, sans-serif; padding: 20px; background: #f0f2f5; margin: 0; }
+    h1 { color: #1a73e8; }
+    ul { list-style: none; padding: 0; }
+    li { 
+      background: white; margin: 10px 0; padding: 18px; 
+      border-radius: 12px; cursor: pointer; font-weight: bold;
+      border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    li:active { background: #d1e3ff; }
+    #info { 
+      background: #fff; padding: 20px; border-radius: 15px; 
+      margin-top: 20px; border-left: 6px solid #1a73e8; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-height: 50px;
+    }
+    .volver { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; }
+  </style>
 </head>
 <body>
+  <div id="contenido"></div>
 
-<div id="contenido"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const v = params.get("vitrina");
+    const a = params.get("apartado");
+    const c = params.get("cajon");
+    const cajon = datos[v]?.apartados[a]?.cajones[c];
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const v = params.get("vitrina");
-const a = params.get("apartado");
-const c = params.get("cajon");
+    if (cajon) {
+      let html = `<h1>${cajon.nombre}</h1><p>Toca un animal para ver su información:</p><ul>`;
+      for (let i in cajon.animales) {
+        html += `<li onclick="mostrar(${i})">${cajon.animales[i].nombre}</li>`;
+      }
+      html += `</ul><div id="info"><i>Selecciona un animal de la lista...</i></div>`;
+      html += `<a class="volver" href="apartados.html?vitrina=${v}&apartado=${a}">← Volver al apartado</a>`;
+      document.getElementById("contenido").innerHTML = html;
 
-const cajon = datos[v]?.apartados[a]?.cajones[c];
-
-if (cajon) {
-
-  let html = `<h1>${cajon.nombre}</h1><ul>`;
-
-  for (let i in cajon.animales) {
-    html += `
-      <li onclick="mostrar(${i})" style="cursor:pointer;">
-        ${cajon.animales[i].nombre}
-      </li>
-    `;
-  }
-
-  html += `</ul><div id="info"></div>`;
-
-  html += `
-    <br><a href="apartados.html?vitrina=${v}&apartado=${a}">
-      ← Volver
-    </a>
-  `;
-
-  document.getElementById("contenido").innerHTML = html;
-
-  window.mostrar = function(id) {
-    const animal = cajon.animales[id];
-    document.getElementById("info").innerHTML = `
-      <h2>${animal.nombre}</h2>
-      <p>${animal.info}</p>
-    `;
-  };
-}
-</script>
-
+      window.mostrar = function(id) {
+        const animal = cajon.animales[id];
+        document.getElementById("info").innerHTML = `<h2>${animal.nombre}</h2><p>${animal.info}</p>`;
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      };
+    }
+  </script>
 </body>
 </html>
