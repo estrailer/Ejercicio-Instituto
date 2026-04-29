@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="datos.js"></script>
+</head>
+<body>
+
+<h1>Vitrinas</h1>
+
+<div id="contenido"></div>
+
+<script>
+let html = "";
+
+for (let v in datos) {
+
+  html += `<h2>${datos[v].nombre}</h2>`;
+
+  for (let a in datos[v].apartados) {
+    const ap = datos[v].apartados[a];
+
+    html += `
+      <a href="apartados.html?vitrina=${v}&apartado=${a}">
+        ${ap.nombre}
+      </a><br>
+    `;
+  }
+
+}
+
+document.getElementById("contenido").innerHTML = html;
+</script>
+
+</body>
+</html>

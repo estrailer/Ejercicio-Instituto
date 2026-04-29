@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="datos.js"></script>
+</head>
+<body>
+
+<div id="contenido"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const v = params.get("vitrina");
+const a = params.get("apartado");
+
+const apartado = datos[v]?.apartados[a];
+
+if (apartado) {
+
+  let html = `
+    <h1>${apartado.nombre}</h1>
+    <img src="${apartado.imagen}" width="300">
+    <h2>Cajones</h2>
+  `;
+
+  const nombres = ["Primer", "Segundo", "Tercer", "Cuarto", "Quinto"];
+  let i = 0;
+
+  for (let c in apartado.cajones) {
+
+    html += `
+      <a href="cajones.html?vitrina=${v}&apartado=${a}&cajon=${c}">
+        ${nombres[i]} cajón
+      </a><br>
+    `;
+
+    i++;
+  }
+
+  html += `<br><a href="index.html">← Volver</a>`;
+
+  document.getElementById("contenido").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
