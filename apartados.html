@@ -5,21 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="datos.js"></script>
   <style>
-    body { font-family: -apple-system, sans-serif; padding: 20px; background: #f0f2f5; margin: 0; }
-    #contenido { max-width: 600px; margin: auto; }
-    h1 { color: #1a73e8; margin-bottom: 10px; }
-    img { width: 100%; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); margin-bottom: 20px; }
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f0f2f5; margin: 0; }
+    .container { max-width: 1000px; margin: auto; }
+    h1 { color: #1a73e8; text-align: center; }
+    
+    /* Layout flexible */
+    .layout { display: flex; flex-direction: column; gap: 30px; margin-top: 20px; }
+    @media (min-width: 768px) { .layout { flex-direction: row; align-items: start; } }
+
+    .col-img { flex: 1; }
+    .col-info { flex: 1; }
+
+    img { width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    
     .cajon-link { 
-      display: block; background: #ffffff; margin: 10px 0; padding: 20px; 
+      display: block; background: white; margin-bottom: 12px; padding: 18px; 
       text-decoration: none; color: #333; border-radius: 12px; 
-      font-weight: bold; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      font-weight: bold; border: 1px solid #ddd; transition: 0.2s;
     }
-    .cajon-link:active { background: #e8f0fe; }
-    .volver { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; font-size: 0.9em; }
+    .cajon-link:hover { background: #f8f9fa; border-color: #1a73e8; padding-left: 25px; }
+    
+    .volver { display: inline-block; margin-top: 20px; color: #1a73e8; text-decoration: none; font-weight: 500; }
   </style>
 </head>
 <body>
-  <div id="contenido"></div>
+  <div class="container">
+    <div id="contenido"></div>
+  </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -28,14 +40,23 @@
     const apartado = datos[v]?.apartados[a];
 
     if (apartado) {
-      let html = `<h1>${apartado.nombre}</h1><img src="${apartado.imagen}"><h2>Selecciona un cajón:</h2>`;
+      let html = `
+        <h1>${apartado.nombre}</h1>
+        <div class="layout">
+          <div class="col-img"><img src="${apartado.imagen}"></div>
+          <div class="col-info">
+            <h2>Cajones</h2>`;
+      
       const nombres = ["Primer", "Segundo", "Tercer", "Cuarto", "Quinto"];
       let i = 0;
       for (let c in apartado.cajones) {
         html += `<a class="cajon-link" href="cajones.html?vitrina=${v}&apartado=${a}&cajon=${c}">${nombres[i]} cajón</a>`;
         i++;
       }
-      html += `<a class="volver" href="index.html">← Volver a vitrinas</a>`;
+      html += `
+            <a class="volver" href="index.html">← Volver al inicio</a>
+          </div>
+        </div>`;
       document.getElementById("contenido").innerHTML = html;
     }
   </script>
