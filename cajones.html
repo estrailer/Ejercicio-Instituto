@@ -26,6 +26,29 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid #1a73e8;
       min-height: 200px;
     }
+
+    /* Estilos para la imagen del animal */
+    .img-animal {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 15px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Estilos para el cuadro de ubicación */
+    .ubicacion-box {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: #e8f0fe;
+      border-radius: 8px;
+      border: 1px dashed #1a73e8;
+      color: #1a73e8;
+      font-size: 0.95em;
+    }
+    .ubicacion-box strong { display: block; margin-bottom: 5px; }
+
     .volver { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; }
   </style>
 </head>
@@ -59,16 +82,33 @@
         </div>`;
       document.getElementById("contenido").innerHTML = html;
 
+      // AQUÍ ESTÁ LA FUNCIÓN ACTUALIZADA
       window.mostrar = function(elemento, id) {
-        // Quitar clase activa de otros
+        // Marcamos el animal seleccionado en la lista
         document.querySelectorAll('li').forEach(l => l.classList.remove('active'));
         elemento.classList.add('active');
 
         const animal = cajon.animales[id];
+        
+        // Verificamos la ubicación
+        const textoUbicacion = animal.ubicacion ? animal.ubicacion : "Ubicación no registrada.";
+        
+        // Verificamos si hay imagen
+        const htmlImagen = animal.imagen ? `<img src="${animal.imagen}" alt="${animal.nombre}" class="img-animal">` : '';
+
         document.getElementById("info").innerHTML = `
           <h2 style="margin-top:0; color:#1a73e8;">${animal.nombre}</h2>
+          ${htmlImagen}
           <p style="font-size:1.1em; line-height:1.7;">${animal.info}</p>
+          
+          <div class="ubicacion-box">
+            <strong>📍 Lugar de recogida:</strong>
+            ${textoUbicacion}
+          </div>
         `;
+
+        // Scroll suave para móviles
+        window.scrollTo({ top: document.getElementById("info").offsetTop - 20, behavior: 'smooth' });
       };
     }
   </script>
