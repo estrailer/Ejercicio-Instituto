@@ -6,7 +6,7 @@ const datos = {
         nombre: "Invertebrados",
         imagen: "img/invertebrados.jpg",
         cajones: {
-          1: { nombre: "Moluscos", animales: { 1: { nombre: "Caracol", info: "..." } } },
+          1: { nombre: "Moluscos", animales: { 1: { nombre: "Caracol", info: "...", imagen: "img/caracol.png" } } },
           2: { nombre: "Artrópodos", animales: { 1: { nombre: "Araña", info: "..." } } },
           3: { nombre: "Insectos", animales: { 1: { nombre: "Mariposa", info: "..." } } },
           4: { nombre: "Crustáceos", animales: { 1: { nombre: "Cangrejo", info: "..." } } },
