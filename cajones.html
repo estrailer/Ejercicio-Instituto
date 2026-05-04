@@ -50,9 +50,41 @@
     .ubicacion-box strong { display: block; margin-bottom: 5px; }
 
     .volver { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; }
+    /* Estilo para el contenedor del zoom */
+    .zoom-overlay {
+        display: none; /* Oculto por defecto */
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+    }
+
+    .zoom-overlay img {
+        max-width: 95%;
+        max-height: 95%;
+        border: 2px solid white;
+        border-radius: 5px;
+    }
+
+    /* Cambiamos el cursor de la imagen original para que sepan que es clicable */
+    .img-animal {
+        cursor: zoom-in;
+        transition: transform 0.3s;
+    }
+
+    .img-animal:hover {
+        transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
+  <div id="zoomCapa" class="zoom-overlay" onclick="cerrarZoom()">
+      <img id="imgZoomed" src="">
+  </div>
   <div class="container">
     <div id="contenido"></div>
   </div>
@@ -94,7 +126,12 @@
         const textoUbicacion = animal.ubicacion ? animal.ubicacion : "Ubicación no registrada.";
         
         // Verificamos si hay imagen
-        const htmlImagen = animal.imagen ? `<img src="${animal.imagen}" alt="${animal.nombre}" class="img-animal">` : '';
+        const htmlImagen = animal.imagen ? 
+            `<img src="${animal.imagen}" 
+                  alt="${animal.nombre}" 
+                  class="img-animal" 
+                  onclick="abrirZoom('${animal.imagen}')" 
+                  title="Haz clic para ampliar">` : '';
 
         document.getElementById("info").innerHTML = `
           <h2 style="margin-top:0; color:#1a73e8;">${animal.nombre}</h2>
@@ -107,6 +144,16 @@
         window.scrollTo({ top: document.getElementById("info").offsetTop - 20, behavior: 'smooth' });
       };
     }
+    window.abrirZoom = function(url) {
+        const capa = document.getElementById("zoomCapa");
+        const img = document.getElementById("imgZoomed");
+        img.src = url;
+        capa.style.display = "flex";
+    };
+
+    window.cerrarZoom = function() {
+        document.getElementById("zoomCapa").style.display = "none";
+    };
   </script>
 </body>
 </html>
