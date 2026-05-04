@@ -11,7 +11,15 @@ const datos = {
               Sus registros fósiles se extienden hacia el período carbonífero. El término 'caracol' también se usa a veces para gasterópodos acuáticos en forma de caracol, 
               que generalmente tienen branquias. En realidad, la mayoría de las especies de caracoles son caracoles marinos. Hay más especies de ellas, y son mucho mayores en el número. 
               También se pueden encontrar muchos tipos de caracoles en hábitats de agua dulce.La mayoría de los caracoles y las babosas son herbívoros. Los caracoles y babosas acuáticas suelen ser omnívoros o carnívoros depredadores.`, 
-            imagen: "img/caracol.png" } } },
+            imagen: "img/caracol.png" },
+            2: { nombre: "Pulpo", 
+            info: `El pulpo o Octopus vulgaris es un molusco cefalópodo (pies en la cabeza), octópodo (ocho pies), perteneciente a la familia Octopodiae. Vive en fondos rocosos en las zonas litorales, entre rocas y piedras y a veces en guaridas.
+              Su dieta consiste principalmente en pequeños crustáceos como cangrejos, así como en bivalvos y peces.
+              Es un animal que se mimetiza con su entorno, haciendo difícil verlo, incluso arruga su piel para hacer parecer una roca con algas y es capaz de esconderse en espacios 10 veces más pequeños que ellos debido a su flexibilidad.
+              Su cuerpo presenta una apariencia robusta y musculosa, aunque relativamente pequeña en comparación con su cabeza, que está claramente definida. A diferencia de los cefalópodos decápodos, sepia y calamar, carece de pluma interna o concha.
+              De la cabeza salen ocho brazos, situados alrededor de la boca, localizada en el centro, con un «pico» similar en forma al de un loro, que le permite capturar a sus presas.
+              Los ocho brazos del pulpo son fuertes y cuentan con dos filas de ventosas pegajosas, están situados alrededor de la boca unidos entre sí por una membrana, siendo su primer par más corto que el resto, y estos últimos miden aproximadamente el doble que el cuerpo.`, 
+            imagen: "img/pulpo.jpg" } } },
 
           2: { nombre: "Artrópodos", animales: { 1: { nombre: "Araña", 
             info: `Las arañas están en todo nuestro planeta tierra, desde las selvas, pasando por los desiertos y polos hasta llegar a las grandes ciudades. 
@@ -24,8 +32,13 @@ const datos = {
             imagen: "img/arana.png" } } },
 
           3: { nombre: "Insectos", animales: { 1: { nombre: "Mariposa", 
-            info: ``, 
-            imagen: "img/" } } },
+            info: `Las mariposas, que son de algún modo los insectos más vistosos, llaman nuestra atención. Como tienen las alas cubiertas de escamas, 
+              forman parte del orden de los lepidópteros, y este es uno de los primeros datos que debemos tener en cuenta para su clasificación.
+              Colombia es el segundo país en biodiversidad en el mundo. Cuenta con el mayor número de mariposas diurnas del mundo (3.500 especies). 
+              Estas se diferencian de las nocturnas por su forma y colores. Las mariposas diurnas vuelan mucho, y mientras lo hacen muestran sus vistosos colores. 
+              En cambio, los colores de las nocturnas son más apagados y se camuflan muy fácil. Las mariposas diurnas descansan con las alas juntas, plegadas sobre el cuerpo, 
+              que a su vez es delgado. Las mariposas nocturnas descansan con las alas planas encima del cuerpo. Son gruesas y a menudo su cuerpo está recubierto de pelo.`, 
+            imagen: "img/mariposa.jpg" } } },
           4: { nombre: "Crustáceos", animales: { 1: { nombre: "Cangrejo", info: "..." } } },
           5: { nombre: "Otros", animales: { 1: { nombre: "Esponja", info: "..." } } }
         }
