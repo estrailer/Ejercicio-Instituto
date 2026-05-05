@@ -12,7 +12,8 @@ const datos = {
               Sus registros fósiles se extienden hacia el período carbonífero. El término 'caracol' también se usa a veces para gasterópodos acuáticos en forma de caracol, 
               que generalmente tienen branquias. En realidad, la mayoría de las especies de caracoles son caracoles marinos. Hay más especies de ellas, y son mucho mayores en el número. 
               También se pueden encontrar muchos tipos de caracoles en hábitats de agua dulce.La mayoría de los caracoles y las babosas son herbívoros. Los caracoles y babosas acuáticas suelen ser omnívoros o carnívoros depredadores.`, 
-            imagen: "img/caracol.png" },
+            imagen: "img/caracol.png",
+            galeria: ["img/caracol2.jpg", "img/caracol3.jpg", "img/caracol4.jpg", "img/caracol5.jpg", "img/caracol6.jpg"] },
             2: { nombre: "Pulpo", 
             info: `El pulpo o Octopus vulgaris es un molusco cefalópodo (pies en la cabeza), octópodo (ocho pies), perteneciente a la familia Octopodiae. Vive en fondos rocosos en las zonas litorales, entre rocas y piedras y a veces en guaridas.
               Su dieta consiste principalmente en pequeños crustáceos como cangrejos, así como en bivalvos y peces.
@@ -20,7 +21,9 @@ const datos = {
               Su cuerpo presenta una apariencia robusta y musculosa, aunque relativamente pequeña en comparación con su cabeza, que está claramente definida. A diferencia de los cefalópodos decápodos, sepia y calamar, carece de pluma interna o concha.
               De la cabeza salen ocho brazos, situados alrededor de la boca, localizada en el centro, con un «pico» similar en forma al de un loro, que le permite capturar a sus presas.
               Los ocho brazos del pulpo son fuertes y cuentan con dos filas de ventosas pegajosas, están situados alrededor de la boca unidos entre sí por una membrana, siendo su primer par más corto que el resto, y estos últimos miden aproximadamente el doble que el cuerpo.`, 
-            imagen: "img/pulpo.jpg" } } 
+            imagen: "img/pulpo.jpg",
+            galeria: ["img/pulpo2.jpg", "img/pulpo3.jpg", "img/pulpo4.jpg", "img/pulpo5.jpg", "img/pulpo6.jpg"] }
+          }
           },
 
           2: { nombre: "Artrópodos", animales: { 1: { nombre: "Araña", 
