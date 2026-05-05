@@ -39,7 +39,7 @@ const datos = {
               En cambio, los colores de las nocturnas son más apagados y se camuflan muy fácil. Las mariposas diurnas descansan con las alas juntas, plegadas sobre el cuerpo, 
               que a su vez es delgado. Las mariposas nocturnas descansan con las alas planas encima del cuerpo. Son gruesas y a menudo su cuerpo está recubierto de pelo.`, 
             imagen: "img/mariposa.jpg" } } },
-          4: { nombre: "Crustáceos", animales: { 1: { nombre: "Cangrejo", info: "..." } } },
+          4: { nombre: "Crustáceos", animales: { 1: { nombre: "Cangrejo", info: "Un cangrejo", imagen: "img/cangrejo.jpg"  } } },
           5: { nombre: "Otros", animales: { 1: { nombre: "Esponja", info: "..." } } }
         }
       },
@@ -47,7 +47,13 @@ const datos = {
         nombre: "Anfibios",
         imagen: "img/anfibios.jpg",
         cajones: {
-          1: { nombre: "Ranas", animales: { 1: { nombre: "Rana verde", info: "..." } } },
+          1: { nombre: "Ranas", animales: { 1: { nombre: "Rana verde", 
+            info: ` Las ranas verdes viven en cualquier lugar donde se encuentren estanques poco profundos de agua dulce, cunetas junto a carreteras, lagos, pantanos, arroyos 
+              y riachuelos. Las ranas verdes pueden encontrarse en charcas vernales y otras masas de agua temporales, pero normalmente no se reproducen en ellas. Esta especie es 
+              muy oportunista y no tarda en colonizar nuevas masas de agua, como piscinas y estanques artificiales. A menudo se les ve descansando en la orilla y saltan al agua 
+              cuando se les acerca. Al habitar un ecotono, en este caso el límite del hábitat terrestre y acuático, las ranas verdes (y otras ranas acuáticas ránidas), mediante un 
+              simple salto, dejan atrás a sus numerosos y más rápidos enemigos terrestres que no pueden cruzar de forma similar ese límite.`,
+            imagen: "img/rana_verde.png" } } },
           2: { nombre: "Sapos", animales: { 1: { nombre: "Sapo común", info: "..." } } },
           3: { nombre: "Salamandras", animales: { 1: { nombre: "Salamandra", info: "..." } } },
           4: { nombre: "Tritones", animales: { 1: { nombre: "Tritón", info: "..." } } },
