@@ -27,73 +27,76 @@
       min-height: 200px;
     }
 
-    /* Estilos para la imagen del animal */
     .img-animal {
       display: block;
       max-width: 100%;
       height: auto;
-      margin: 15px auto;
+      margin: 15px auto 10px auto;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: zoom-in;
+      transition: transform 0.3s;
     }
+    .img-animal:hover { transform: scale(1.02); }
 
-    /* Estilos para el cuadro de ubicación */
-    .ubicacion-box {
-      margin-top: 15px;
-      padding: 12px;
-      background-color: #e8f0fe;
-      border-radius: 8px;
-      border: 1px dashed #1a73e8;
-      color: #1a73e8;
-      font-size: 0.95em;
+    /* CONTENEDOR DE EXACTAMENTE 3 FOTOS */
+    .galeria-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Forzamos 3 columnas */
+      gap: 10px;
+      margin-bottom: 15px;
     }
-    .ubicacion-box strong { display: block; margin-bottom: 5px; }
+    .mini-preview {
+      width: 100%;
+      height: 80px; /* Un poco más altas para que luzcan */
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid #eee;
+      transition: border-color 0.2s;
+    }
+    .mini-preview:hover { border-color: #1a73e8; }
+
+    .btn-galeria-completa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #34a853;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background 0.3s;
+    }
+    .btn-galeria-completa:hover { background: #2d8a45; }
 
     .volver { display: inline-block; margin-top: 20px; color: #666; text-decoration: none; }
-    /* Estilo para el contenedor del zoom */
+
     .zoom-overlay {
-        display: none; /* Oculto por defecto */
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-        cursor: zoom-out;
+        display: none; position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.9); z-index: 1000;
+        justify-content: center; align-items: center; cursor: zoom-out;
     }
-
-    .zoom-overlay img {
-        max-width: 95%;
-        max-height: 95%;
-        border: 2px solid white;
-        border-radius: 5px;
-    }
-
-    /* Cambiamos el cursor de la imagen original para que sepan que es clicable */
-    .img-animal {
-        cursor: zoom-in;
-        transition: transform 0.3s;
-    }
-
-    .img-animal:hover {
-        transform: scale(1.02);
-    }
+    .zoom-overlay img { max-width: 95%; max-height: 95%; border: 2px solid white; border-radius: 5px; transition: transform 0.2s; }
+    .zoom-overlay img.pulsando { transform: scale(0.92); }
   </style>
 </head>
 <body>
-  <div id="zoomCapa" class="zoom-overlay" onclick="cerrarZoom()">
-      <img id="imgZoomed" src="">
+  <div id="zoomCapa" class="zoom-overlay" onclick="cerrarZoom(event)">
+      <img id="imgZoomed" src="" onmousedown="iniciarPresion()" onmouseup="cancelarPresion()" ontouchstart="iniciarPresion()" ontouchend="cancelarPresion()">
   </div>
+
   <div class="container">
     <div id="contenido"></div>
   </div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const v = params.get("vitrina");
-    const a = params.get("apartado");
-    const c = params.get("cajon");
+    const v = params.get("vitrina"), a = params.get("apartado"), c = params.get("cajon");
     const cajon = datos[v]?.apartados[a]?.cajones[c];
 
     if (cajon) {
@@ -114,45 +117,68 @@
         </div>`;
       document.getElementById("contenido").innerHTML = html;
 
-      // AQUÍ ESTÁ LA FUNCIÓN ACTUALIZADA
       window.mostrar = function(elemento, id) {
-        // Marcamos el animal seleccionado en la lista
         document.querySelectorAll('li').forEach(l => l.classList.remove('active'));
         elemento.classList.add('active');
 
         const animal = cajon.animales[id];
         
-        // Verificamos la ubicación
-        const textoUbicacion = animal.ubicacion ? animal.ubicacion : "Ubicación no registrada.";
-        
-        // Verificamos si hay imagen
-        const htmlImagen = animal.imagen ? 
-            `<img src="${animal.imagen}" 
-                  alt="${animal.nombre}" 
-                  class="img-animal" 
-                  onclick="abrirZoom('${animal.imagen}')" 
-                  title="Haz clic para ampliar">` : '';
+        const htmlImagenPrincipal = animal.imagen ? 
+            `<img src="${animal.imagen}" class="img-animal" onclick="abrirZoom('${animal.imagen}')" title="Ampliar foto principal">` : '';
+
+        // Lógica para mostrar SOLO 3 miniaturas
+        let bloqueGaleria = '';
+        if (animal.galeria && animal.galeria.length > 0) {
+          bloqueGaleria = '<div class="galeria-preview">';
+          
+          // El método .slice(0, 3) garantiza que solo se cojan las 3 primeras del array 'galeria'
+          animal.galeria.slice(0, 3).forEach(foto => {
+            bloqueGaleria += `<img src="${foto}" class="mini-preview" onclick="abrirZoom('${foto}')" title="Vista rápida">`;
+          });
+          
+          bloqueGaleria += '</div>';
+
+          // Botón para ir a la galería completa (galeria.html)
+          bloqueGaleria += `
+            <a href="galeria.html?vitrina=${v}&apartado=${a}&cajon=${c}&id=${id}" class="btn-galeria-completa">
+               📷 Ver galería completa de ${animal.nombre}
+            </a>`;
+        }
 
         document.getElementById("info").innerHTML = `
           <h2 style="margin-top:0; color:#1a73e8;">${animal.nombre}</h2>
-          ${htmlImagen}
-          <p style="font-size:1.1em; line-height:1.7;">${animal.info}</p>
-          
+          ${htmlImagenPrincipal}
+          ${bloqueGaleria}
+          <p style="font-size:1.1em; line-height:1.7; margin-top:20px;">${animal.info}</p>
         `;
 
-        // Scroll suave para móviles
         window.scrollTo({ top: document.getElementById("info").offsetTop - 20, behavior: 'smooth' });
       };
     }
+
+    // ZOOM Y SECRETO CANGREJO
+    let timer;
     window.abrirZoom = function(url) {
         const capa = document.getElementById("zoomCapa");
-        const img = document.getElementById("imgZoomed");
-        img.src = url;
+        document.getElementById("imgZoomed").src = url;
         capa.style.display = "flex";
     };
 
-    window.cerrarZoom = function() {
-        document.getElementById("zoomCapa").style.display = "none";
+    window.cerrarZoom = function(e) {
+        if(e.target.id !== "imgZoomed") document.getElementById("zoomCapa").style.display = "none";
+    };
+
+    window.iniciarPresion = function() {
+      const nombreActivo = document.querySelector('#info h2')?.innerText;
+      if (nombreActivo === "Cangrejo") {
+        document.getElementById("imgZoomed").classList.add("pulsando");
+        timer = setTimeout(() => alert("¡Secreto de Bichos Mutxamel descubierto! 🦀✨"), 10000);
+      }
+    };
+
+    window.cancelarPresion = function() {
+      document.getElementById("imgZoomed").classList.remove("pulsando");
+      clearTimeout(timer);
     };
   </script>
 </body>
