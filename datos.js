@@ -72,7 +72,7 @@ const datos = {
               pequeño y mediano tamaño y a los humanos puede producirles algunas alergias. Pero los sapos no se defienden de sus enemigos solo con ese veneno llamado “bufotoxina”, 
               sino que también pueden inflar su cuerpo para parecer menos apetitosos o mezclarse y camuflarse en el entorno gracias a sus colores, casi siempre marrón o verde. 
               Sin embargo, también existen sapos de colores más brillantes, y ese brillo que tienen en su piel advierte a los enemigos de su peligrosidad: ¡son venenosos!`, 
-            imagen: "img/sapo2.png",
+            
             galeria: ["img/sapo2.jpg", "img/sapo3.jpg", "img/sapo4.jpg", "img/sapo5.jpg", "img/sapo6.jpg"] } } 
           },
           3: { nombre: "Salamandras", animales: { 1: { nombre: "Salamandra", 
