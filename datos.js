@@ -34,7 +34,8 @@ const datos = {
               con la que fabrica su tela. Las arañas tienen un tamaño pequeño, pero también las hay grandes. El color depende de la especie. Por ejemplo las exóticas, con sus colores son 
               brillantes; otras lo cambian como camuflaje de depredadores o dependiendo el lugar en el que se encuentren. La mayoría de arañas tienen un promedio de vida de un año. 
               Sin embargo, hay especies que pueden vivir alrededor de 8 o 10 años. Las tarántulas por ejemplo, pueden alcanzar los 30 años.`, 
-            imagen: "img/arana.png" } } 
+            imagen: "img/arana.png",
+            galeria: ["img/araña2.jpg", "img/araña3.jpg", "img/araña4.jpg", "img/araña5.jpg", "img/araña6.jpg"] } } 
           },
 
           3: { nombre: "Insectos", animales: { 1: { nombre: "Mariposa", 
@@ -44,7 +45,8 @@ const datos = {
               Estas se diferencian de las nocturnas por su forma y colores. Las mariposas diurnas vuelan mucho, y mientras lo hacen muestran sus vistosos colores. 
               En cambio, los colores de las nocturnas son más apagados y se camuflan muy fácil. Las mariposas diurnas descansan con las alas juntas, plegadas sobre el cuerpo, 
               que a su vez es delgado. Las mariposas nocturnas descansan con las alas planas encima del cuerpo. Son gruesas y a menudo su cuerpo está recubierto de pelo.`, 
-            imagen: "img/mariposa.jpg" } } 
+            imagen: "img/mariposa.jpg",
+            galeria: ["img/mariposa2.jpg", "img/mariposa3.jpg", "img/mariposa4.jpg", "img/mariposa5.jpg", "img/mariposa6.jpg"] } } 
           },
           4: { nombre: "Crustáceos", animales: { 1: { nombre: "Cangrejo", info: "Un cangrejo", imagen: "img/cangrejo.jpg"  } } },
           5: { nombre: "Otros", animales: { 1: { nombre: "Esponja", info: "..." } } }
@@ -60,7 +62,8 @@ const datos = {
               muy oportunista y no tarda en colonizar nuevas masas de agua, como piscinas y estanques artificiales. A menudo se les ve descansando en la orilla y saltan al agua 
               cuando se les acerca. Al habitar un ecotono, en este caso el límite del hábitat terrestre y acuático, las ranas verdes (y otras ranas acuáticas ránidas), mediante un 
               simple salto, dejan atrás a sus numerosos y más rápidos enemigos terrestres que no pueden cruzar de forma similar ese límite.`,
-            imagen: "img/rana_verde.png" } } 
+            imagen: "img/rana_verde.png",
+            galeria: ["img/rana2.jpg", "img/rana3.jpg", "img/rana4.jpg", "img/rana5.jpg", "img/rana6.jpg"] } } 
           },
           2: { nombre: "Sapos", animales: { 1: { nombre: "Sapo común", 
             info: `Los sapos son unos anfibios muy comunes que se caracterizan por tener verrugas, una piel muy seca con unas glándulas que reciben el nombre de “parotoides” 
@@ -69,7 +72,8 @@ const datos = {
               pequeño y mediano tamaño y a los humanos puede producirles algunas alergias. Pero los sapos no se defienden de sus enemigos solo con ese veneno llamado “bufotoxina”, 
               sino que también pueden inflar su cuerpo para parecer menos apetitosos o mezclarse y camuflarse en el entorno gracias a sus colores, casi siempre marrón o verde. 
               Sin embargo, también existen sapos de colores más brillantes, y ese brillo que tienen en su piel advierte a los enemigos de su peligrosidad: ¡son venenosos!`, 
-            imagen: "img/sapo.png" } } 
+            imagen: "img/sapo.png",
+            galeria: ["img/sapo2.jpg", "img/sapo3.jpg", "img/sapo4.jpg", "img/sapo5.jpg", "img/sapo6.jpg"] } } 
           },
           3: { nombre: "Salamandras", animales: { 1: { nombre: "Salamandra", 
             info: `Es un animal que se mueve lentamente, con un andar bastante torpe. Es capaz de regenerar rápidamente partes de su cuerpo heridas. En la naturaleza, la salamandra 
@@ -78,21 +82,24 @@ const datos = {
               galerías subterráneas de mamíferos, antiguos túneles mineros; incluso es posible encontrar una salamandra en tu sótano. Como la salamandra no sabe nadar, debe adaptarse a 
               los cambios de nivel del agua para evitar ahogarse. Las salamandras adultas se alimentan principalmente de pequeños invertebrados, como cochinillas, escarabajos o algunas 
               especies de babosas.`,
-            imagen: "img/salamandra.png" } } 
+            imagen: "img/salamandra.png",
+            galeria: ["img/salamandra2.jpg", "img/salamandra3.jpg", "img/salamandra4.jpg", "img/salamandra5.jpg", "img/salamandra6.jpg"] } } 
           },
           4: { nombre: "Tritones", animales: { 1: { nombre: "Tritón", 
             info: `Los tritones reúnen una serie de características que hacen de este pequeño anfibio un animal de lo más interesante. Así, aunque parezcan bonitos e inofensivos, 
               pueden ser peligrosos. Las toxinas que segregan a través de la piel, como mecanismo de defensa, podrían matar a una persona. También pueden volverles a crecer miembros y 
               órganos perdidos. Esa capacidad los convierte en sujetos importantes en los estudios médicos sobre regeneración. Además, han volado en misiones espaciales. Veamos algunas 
               curiosidades de los tritones.`,
-            imagen: "img/triton.png"} } 
+            imagen: "img/triton.png",
+            galeria: ["img/triton2.jpg", "img/triton3.jpg", "img/triton4.jpg", "img/triton5.jpg", "img/triton6.jpg"] } } 
           },
           5: { nombre: "Otros", animales: { 1: { nombre: "Ajolote", 
             info: `El ajolote es un anfibio endémico de México, conocido por su aspecto único y su asombrosa capacidad de regenerar partes de su cuerpo, como extremidades, 
               cola, e incluso órganos internos. Su nombre proviene del náhuatl axolotl, que significa “monstruo del agua”. A diferencia de la mayoría de los anfibios, el ajolote 
               conserva durante toda su vida características juveniles, como las branquias externas plumosas que sobresalen de su cabeza. Este fenómeno, llamado neotenia, 
               le permite vivir permanentemente en el agua sin pasar por una metamorfosis completa.`,
-            imagen: "img/azolote.png"} } 
+            imagen: "img/azolote.png",
+            galeria: ["img/ajolote2.jpg", "img/ajolote3.jpg", "img/ajolote4.jpg", "img/ajolote5.jpg", "img/ajolote6.jpg"] } } 
           }
         }
       }
